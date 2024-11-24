@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
             align-items: center;
             padding: 10px;
             margin: 10px 0;
+            border: 8px;
         }
 
         .bot-message {
@@ -84,25 +86,33 @@
             margin-left: 10px;
         }
 
-        .profile-button {
+        .arrow-container {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            color: #e6d029;
-            cursor: pointer;
         }
 
-        .profile-button:hover {
-            color: #ffeb3b;
+        .arrow-button {
+            background-color: #FFD700;
+            color: #4e2a7e;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .arrow-button:hover {
+            background-color: #E6C300;
         }
     </style>
 </head>
 <body>
     <div class="chat-container">
-        <button class="profil-button" onclick="redirectToProfile()">&#8599;</button>
+        <div class="arrow-container">
+            <button class="arrow-button" onclick="redirectToProfile()">⮕</button>
+        </div>
         <h2 style="text-align: center; color: #e6d029;">бот для навчання</h2>
         <div class="messages" id="chatContainer"></div>
         <div class="input-container">
@@ -111,6 +121,10 @@
         </div>
     </div>
     <script>
+        function redirectToProfile() {
+            window.location.href = "profil.html"; // Вказуємо шлях до файлу profil.html
+        }
+
         function sendMessage() {
             const userInput = document.getElementById('userInput');
             const chatContainer = document.getElementById('chatContainer');
@@ -131,60 +145,12 @@
                 botMessage.innerHTML = `<p>Бот: Площа круга обчислюється за формулою S = π * r², де r – радіус круга.</p>`;
             } else if (question.toLowerCase().includes('кайдашева сім\'я')) {
                 botMessage.innerHTML = `<p>Бот: Автором твору "Кайдашева сім'я" є Іван Нечуй-Левицький.</p>`;
-            } else if (question.toLowerCase().includes('катерина')) {
-                botMessage.innerHTML = `<p>Бот: Автором поеми "Катерина" є Тарас Шевченко.</p>`;
-            } else if (question.toLowerCase().includes('чорна рада')) {
-                botMessage.innerHTML = `<p>Бот: "Чорна рада" — це історичний роман, написаний Пантелеймоном Кулішем.</p>`;
-            } else if (question.toLowerCase().includes('заповіт')) {
-                botMessage.innerHTML = `<p>Бот: Вірш "Заповіт" був написаний Тарасом Шевченком у 1845 році.</p>`;
-            } 
-
-            else if (question.toLowerCase().includes('клітина')) {
-                botMessage.innerHTML = `<p>Бот: Клітина — це основна структурна та функціональна одиниця всіх живих організмів.</p>`;
-            } else if (question.toLowerCase().includes('фотосинтез')) {
-                botMessage.innerHTML = `<p>Бот: Фотосинтез — це процес, під час якого рослини перетворюють сонячну енергію на хімічну енергію, виробляючи кисень.</p>`;
-            } 
-
-            else if (question.toLowerCase().includes('найдовша річка')) {
-                botMessage.innerHTML = `<p>Бот: Найдовша річка у світі — це Ніл, який протікає через 11 країн Африки.</p>`;
-            } else if (question.toLowerCase().includes('столиця франції')) {
-                botMessage.innerHTML = `<p>Бот: Столиця Франції — це Париж.</p>`;
-            } 
-
-            else if (question.toLowerCase().includes('площа трикутника')) {
-                botMessage.innerHTML = `<p>Бот: Площа трикутника обчислюється за формулою S = 0.5 * a * h, де a — довжина основи, h — висота.</p>`;
-            } else if (question.toLowerCase().includes('піфагорової теореми')) {
-                botMessage.innerHTML = `<p>Бот: Теорема Піфагора: у прямокутному трикутнику квадрат гіпотенузи дорівнює сумі квадратів катетів (c² = a² + b²).</p>`;
-            } 
-
-            else if (question.toLowerCase().includes('сила тяжіння')) {
-                botMessage.innerHTML = `<p>Бот: Сила тяжіння — це сила, яка притягує об'єкти до центру Землі або іншої планети. Формула: F = m * g.</p>`;
-            } else if (question.toLowerCase().includes('швидкість світла')) {
-                botMessage.innerHTML = `<p>Бот: Швидкість світла у вакуумі становить приблизно 299,792 км/с.</p>`;
-            } 
-            
-            else if (question.toLowerCase().includes('молекула води')) {
-                botMessage.innerHTML = `<p>Бот: Молекула води складається з двох атомів водню та одного атома кисню, формула — H₂O.</p>`;
-            } else if (question.toLowerCase().includes('ph води')) {
-                botMessage.innerHTML = `<p>Бот: Значення pH чистої води — приблизно 7, що вважається нейтральним.</p>`;
-            } 
-
-            else if (question.toLowerCase().includes('the weather is nice today')) {
-                botMessage.innerHTML = `<p>Бот: Переклад: "Сьогодні гарна погода".</p>`;
-            } else if (question.toLowerCase().includes('how are you')) {
-                botMessage.innerHTML = `<p>Бот: Переклад: "Як справи?"</p>`;
-            }
-
-            else {
+            } else {
                 botMessage.innerHTML = `<p>Бот: Вибачте, але я поки не можу відповісти на це питання.</p>`;
             }
 
             chatContainer.appendChild(botMessage);
             chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        function redirectToProfile() {
-            window.location.href = "profile.html";
         }
 
         document.getElementById('userInput').addEventListener('keypress', function(event) {
