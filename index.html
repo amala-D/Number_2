@@ -25,6 +25,7 @@
             display: flex;
             flex-direction: column;
             height: 80vh;
+            position: relative;
         }
 
         .messages {
@@ -39,7 +40,6 @@
             align-items: center;
             padding: 10px;
             margin: 10px 0;
-            border: 8px;
         }
 
         .bot-message {
@@ -83,22 +83,38 @@
             cursor: pointer;
             margin-left: 10px;
         }
+
+        .profile-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            color: #e6d029;
+            cursor: pointer;
+        }
+
+        .profile-button:hover {
+            color: #ffeb3b;
+        }
     </style>
-    </head>
-    <body>
-        <div class="chat-container">
-            <h2 style="text-align: center; color: #e6d029;">бот для навчання</h2>
-            <div class="messages" id="chatContainer"></div>
-            <div class="input-container">
-                <input type="text" id="userInput" placeholder="Введіть своє питання тут..." />
-            <button onclick="sendMessage()"><a href="profil.html">+</a></button>
-            </div>
+</head>
+<body>
+    <div class="chat-container">
+        <button class="profil-button" onclick="redirectToProfile()">&#8599;</button>
+        <h2 style="text-align: center; color: #e6d029;">бот для навчання</h2>
+        <div class="messages" id="chatContainer"></div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Введіть своє питання тут..." />
+            <button onclick="sendMessage()">+</button>
         </div>
-        <script>
-            function sendMessage() {
-                const userInput = document.getElementById('userInput');
-                const chatContainer = document.getElementById('chatContainer');
-                const question = userInput.value.trim();
+    </div>
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const chatContainer = document.getElementById('chatContainer');
+            const question = userInput.value.trim();
             if (question === '') return;
 
             const userMessage = document.createElement('div');
@@ -159,13 +175,16 @@
                 botMessage.innerHTML = `<p>Бот: Переклад: "Як справи?"</p>`;
             }
 
-            else{
+            else {
                 botMessage.innerHTML = `<p>Бот: Вибачте, але я поки не можу відповісти на це питання.</p>`;
             }
 
             chatContainer.appendChild(botMessage);
-
             chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function redirectToProfile() {
+            window.location.href = "profile.html";
         }
 
         document.getElementById('userInput').addEventListener('keypress', function(event) {
@@ -174,5 +193,5 @@
             }
         });
     </script>
-    </body>
+</body>
 </html>
