@@ -31,20 +31,20 @@
             </div>
             <button type="submit" class="register-button">Реєстрація</button>
         </form>
-        <p class="redirect">Вже зареєстровані? <a href="index.html">Увійдіть</a></p>
+        <p class="redirect">Вже зареєстровані? <a href="bot.html">Увійдіть</a></p>
     </div>
     <script>
-        // Обробка події натискання кнопки "Реєстрація"
+        // Додаємо функціонал для кнопки "Реєстрація"
         document.getElementById('registration-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Скасовуємо стандартну поведінку форми
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
 
-            // Перевірка наявності даних
+            // Перевіряємо, чи поля не порожні
             if (email && password) {
                 alert('Реєстрація успішна!');
-                // Перехід до сторінки чату
-                window.location.href = 'index.html';
+                // Переходимо до сторінки чату
+                window.location.href = 'bot.html';
             } else {
                 alert('Будь ласка, заповніть усі поля!');
             }
